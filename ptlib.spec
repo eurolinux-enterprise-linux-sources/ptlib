@@ -1,7 +1,7 @@
 Name:		ptlib
 Summary:	Portable Tools Library
 Version:	2.6.5
-Release:	3%{?dist}
+Release:	5%{?dist}
 URL:		http://www.opalvoip.org/
 Source0:	ftp://ftp.gnome.org/pub/gnome/sources/%{name}/2.6/%{name}-%{version}.tar.bz2
 License:	MPLv1.0
@@ -87,6 +87,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/ptlib.pc
 
 %changelog
+* Tue Jan 19 2016 Benjamin Otte <otte@redhat.com> - 2.6.5-5
+- Fix plugin directory in multilib patch
+Resolves: #rhbz766169
+
 * Tue Jun 22 2010 Benjamin Otte <otte@redhat.com> - 2.6.5-3
 - Remove ptlib-config binary
 Resolves: #rhbz605100

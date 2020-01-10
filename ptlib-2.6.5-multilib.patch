@@ -64,9 +64,9 @@
 -#undef P_DEFAULT_PLUGIN_DIR
 +
 +#ifdef P_64BIT
-+#define P_DEFAULT_PLUGIN_DIR "/usr/lib64/" PTLIB_VERSION
++#define P_DEFAULT_PLUGIN_DIR "/usr/lib64/ptlib-" PTLIB_VERSION
 +#else
-+#define P_DEFAULT_PLUGIN_DIR "/usr/lib/" PTLIB_VERSION
++#define P_DEFAULT_PLUGIN_DIR "/usr/lib/ptlib-" PTLIB_VERSION
 +#endif
  
  /////////////////////////////////////////////////
