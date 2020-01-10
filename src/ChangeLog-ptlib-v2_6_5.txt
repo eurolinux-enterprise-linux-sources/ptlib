@@ -1,0 +1,215 @@
+2009-07-05 05:53  rjongbloed
+
+	* [r23078] version.h:
+	  Update version number for beta v2.6.5
+
+2009-07-08 16:30  rjongbloed
+
+	* [r23090] ., src/ptclib/cypher.cxx:
+	  Fixed base 64 encoder for strings less than 3 characters long,
+	  thanks Stefano Picerno
+
+2009-07-21 23:31  rjongbloed
+
+	* [r23120] ., include/ptlib/unix/ptlib/pmachdep.h,
+	  src/ptclib/pstun.cxx, src/ptlib/common/contain.cxx:
+	  Mac support for Posix clock_gettime() function.
+	  
+	  Fixed failure to use STUN sockets with symmetric NAT and have not
+	  set any port range. Port range not needed if explicit port is
+	  specified.
+	  
+	  Fixed printf to PString where output is more than 1000 bytes, on
+	  Linux.
+
+2009-07-29 01:28  rjongbloed
+
+	* [r23151] ., configure.exe, tools/configure/configure.cpp:
+	  Changed Windows configure so when a search of directories is
+	  performed, the directories defined by the INCLUDE environment
+	  variable are checked first.
+	  
+	  This avoids some conflicts where for some "standard" headers, one
+	  part of the system uses one version and another part uses a
+	  different version. For example winsock2.h is being used from the
+	  INCLUDE path (C:\Program Files\Microsoft Visual Studio
+	  8\VC\PlatformSDK) early in the compile, but configure and
+	  ptbuildopts.h try and use the version in C:\Program
+	  Files\Microsoft SDKs\Windows\v6.0a which then conflicts later in
+	  the compile.
+	  
+	  This seems to have started happening when someone changed the
+	  order of the directories in configure.ac
+
+2009-07-29 04:11  rjongbloed
+
+	* [r23160] ., tools/plugintest/main.cxx:
+	  Fixed bug ID: 2809583 "Unable to build
+	  ptlib-2.6.3/tools/plugintest on
+	  Linux"
+
+2009-07-29 04:23  rjongbloed
+
+	* [r23161] plugins/configure, plugins/configure.in:
+	  Applied fix for bug ID: 2821247 "The absence of libv4l2 should
+	  not block
+	  V4L2 plugin", thanks Elaine Xiong
+
+2009-07-29 04:30  rjongbloed
+
+	* [r23163] plugins/sound_sunaudio/Makefile,
+	  src/ptlib/common/vconvert.cxx:
+	  Applied fixes for bugs:
+	  ID: 2821218 "A build error when generating SunAudio plugin"
+	  ID: 2821189 "The video convertor of YUY2toYUV420P does not work"
+	  
+	  Thanks Elaine Xiong
+
+2009-07-29 05:10  rjongbloed
+
+	* [r23167] plugins/configure, plugins/configure.in:
+	  Fixed ID: 2821744 "ptlib avc plugin is broken with
+	  libraw1393-2.0",
+	  thanks Mounir Lamouri
+	  
+	  Changed default for AVC plug in to be disabled until someone
+	  fixes the
+	  plug in.
+
+2009-07-29 05:16  rjongbloed
+
+	* [r23169] configure, configure.ac:
+	  Fixed bug ID: 2820953 "remconn option need config-file option",
+	  thanks
+	  Mounir Lamouri
+
+2009-07-29 07:46  rjongbloed
+
+	* [r23177] configure, configure.ac, src/ptlib/common/sockets.cxx:
+	  Applied fix for bug ID: 2822314 "Mingw fails with sockets.cxx",
+	  thanks Michael Rickmann
+
+2009-07-30 00:13  rjongbloed
+
+	* [r23185] ., plugins/sound_alsa/sound_alsa.cxx,
+	  plugins/sound_alsa/sound_alsa.h:
+	  Applied patch ID: 2815105 "some fix on sound_alsa.cxx", thanks
+	  Giorgio Alfarano
+
+2009-08-12 05:24  csoutheren
+
+	* [r23208] src/ptlib/common/contain.cxx:
+	  Fix reallocate when using custom allocators
+	  Backport from trunk
+
+2009-08-21 00:14  rjongbloed
+
+	* [r23236] ., src/ptlib/msos/win32.cxx:
+	  Applied fix for ID: 2836052 "Ptlib cannot distinguish between
+	  Vista and Win 7", thanks Michael Rickmann
+
+2009-08-21 00:41  rjongbloed
+
+	* [r23239] Makefile.in, make/lib.mak:
+	  Applied patch ID: 2835687 "Mingw naming of libpt dll is unusual
+	  for
+	  Windows", thanks Michael Rickmann.
+
+2009-08-22 01:43  rjongbloed
+
+	* [r23249] ., src/ptlib/msos/sound_win32.cxx:
+	  Applied fix for bug ID: 2841719 "WindowsMultimedia can not get
+	  volume setting", thanks Michael Rickmann
+
+2009-08-24 08:44  rjongbloed
+
+	* [r23256] ., src/ptlib/unix/tlibthrd.cxx:
+	  Further changes for 64 bit Unix support, thanks Alexander V.
+	  Chernikov
+	  
+	  Patch Independently supplied by Thomas Klausner as well.
+
+2009-08-24 08:55  rjongbloed
+
+	* [r23258] ., src/ptclib/pssl.cxx:
+	  Compatibility with later OpenSSL (specifically from BSD) headers,
+	  thanks Thomas Klausner.
+
+2009-08-25 00:25  rjongbloed
+
+	* [r23262] ., src/ptclib/pssl.cxx:
+	  Better patch for new OPenSSL version compatibility, independently
+	  provided by Peter Robinson & Thomas Klausner
+
+2009-08-25 00:44  rjongbloed
+
+	* [r23264] src/Makefile:
+	  Applied patch ID: 2843689 "Compilation and installation
+	  bugfixes", thanks Alexey Slynko
+	  
+	  1) Broken install (at least with gmake 3.81)
+	  2) Commited revision 23240. htppsrvr.cxx uses functions from
+	  html.cxx. It doesn't compile at systems, where http is exists and
+	  httpforms is absent
+
+2009-08-28 06:07  rjongbloed
+
+	* [r23291] src/ptclib/psoap.cxx, src/ptlib/msos/sound_win32.cxx,
+	  src/ptlib/unix/tlibthrd.cxx:
+	  Adjusted some PTRACE log levels.
+
+2009-08-28 08:53  rjongbloed
+
+	* [r23298] src/ptclib/pvfiledev.cxx, src/ptclib/shttpsvc.cxx,
+	  src/ptlib/common/vfakeio.cxx:
+	  Adjusted some PTRACE log levels.
+
+2009-09-05 01:02  rjongbloed
+
+	* [r23336] configure, configure.ac, include/ptclib/vsdl.h,
+	  include/ptlib/unix/ptlib/contain.h, make/unix.mak,
+	  src/ptclib/vsdl.cxx, src/ptlib/common/osutils.cxx,
+	  src/ptlib/unix/config.cxx, src/ptlib/unix/tlib.cxx,
+	  src/ptlib/unix/tlibthrd.cxx:
+	  Applied patch ID: 2847226 "ptlib2.6.4 FreeBSD compability",
+	  thanks Alexander V. Chernikov
+
+2009-09-05 03:25  rjongbloed
+
+	* [r23340] include/ptlib/msos/ptlib/contain.h:
+	  Fixed Windows build after submitted patch.
+
+2009-09-14 03:51  rjongbloed
+
+	* [r23428] configure, configure.ac, make/unix.mak:
+	  Applied patch for kFreeBSD support, thanks Petr Salinge
+
+2009-09-14 04:47  rjongbloed
+
+	* [r23429] Makefile.in, make/common.mak, make/lib.mak,
+	  src/Makefile:
+	  Added "quiter" version of compile. Can get back to "noisy"
+	  version by going make VERBOSE=1
+
+2009-09-14 07:35  rjongbloed
+
+	* [r23434] ., src/ptlib/unix/udll.cxx:
+	  Fixed return of correct full path when the "full" parameter is
+	  used in PDynaLink::GetName() function.
+
+2009-09-16 08:11  rjongbloed
+
+	* [r23470] ., make/common.mak, make/lib.mak, make/plugins.mak,
+	  src/Makefile:
+	  Improved "quiet" version of compile.
+
+2009-09-16 13:19  rjongbloed
+
+	* [r23478] ., make/common.mak:
+	  Yet another tiny enhancement to the quite build.
+
+2009-09-17 07:56  rjongbloed
+
+	* [r23485] ., make/common.mak:
+	  Yet another tiny enhancement to the quiet build.
+
