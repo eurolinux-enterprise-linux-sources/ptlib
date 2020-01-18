@@ -1,0 +1,19 @@
+diff -up ptlib-2.10.10/make/ptlib-config.in.multilib ptlib-2.10.10/make/ptlib-config.in
+--- ptlib-2.10.10/make/ptlib-config.in.multilib	2013-10-09 22:46:46.721524175 -0400
++++ ptlib-2.10.10/make/ptlib-config.in	2013-10-09 22:49:43.072572162 -0400
+@@ -8,12 +8,12 @@ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ 
+ VERSION="@PTLIB_VERSION@"
+-CCFLAGS="@STDCCFLAGS@"
++CCFLAGS=`pkg-config --cflags ptlib`
+ LDFLAGS="@LDFLAGS@"
+ LIBS="@ENDLDLIBS@ -lpt"
+-LIBDIR="@LIBDIR@"
++LIBDIR=`pkg-config --variable libdir ptlib`
+ PTINSTDIR="@prefix@/share/ptlib"
+-MACHTYPE="@MACHTYPE@"
++MACHTYPE=`pkg-config --variable machtype ptlib`
+ OSTYPE="@OSTYPE@"
+ OSRELEASE="@OSRELEASE@"
+ SHAREDLIBEXT="@SHAREDLIBEXT@"
