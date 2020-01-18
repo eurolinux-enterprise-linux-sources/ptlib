@@ -1,19 +1,42 @@
-diff -up ptlib-2.10.10/make/ptlib-config.in.multilib ptlib-2.10.10/make/ptlib-config.in
---- ptlib-2.10.10/make/ptlib-config.in.multilib	2013-10-09 22:46:46.721524175 -0400
-+++ ptlib-2.10.10/make/ptlib-config.in	2013-10-09 22:49:43.072572162 -0400
-@@ -8,12 +8,12 @@ prefix=@prefix@
- exec_prefix=@exec_prefix@
+--- ptlib-2.10.2/ptlib.pc.in.old	2014-03-18 02:21:43.388425144 +0100
++++ ptlib-2.10.2/ptlib.pc.in	2014-03-18 02:19:23.094878006 +0100
+@@ -6,6 +6,7 @@
+ suffix=
+ machtype=@MACHTYPE@
+ ostype=@OSTYPE@
++osrelease=@OSRELEASE@
+ objdir=obj_@OSTYPE@_@MACHTYPE@${suffix}
  
- VERSION="@PTLIB_VERSION@"
+ Name: ptlib
+--- ptlib-2.10.2/make/ptlib-config.in.old	2014-03-18 02:12:44.045163430 +0100
++++ ptlib-2.10.2/make/ptlib-config.in	2014-03-18 02:21:03.497553973 +0100
+@@ -4,18 +4,18 @@
+ # apparently shamelessly ripped from gtk's gtk-config.in
+ #
+ 
+-prefix=@prefix@
+-exec_prefix=@exec_prefix@
++prefix=`pkg-config --variable prefix ptlib`
++exec_prefix=`pkg-config --variable exec-prefix ptlib`
+ 
+-VERSION="@PTLIB_VERSION@"
 -CCFLAGS="@STDCCFLAGS@"
-+CCFLAGS=`pkg-config --cflags ptlib`
- LDFLAGS="@LDFLAGS@"
- LIBS="@ENDLDLIBS@ -lpt"
+-LDFLAGS="@LDFLAGS@"
+-LIBS="@ENDLDLIBS@ -lpt"
 -LIBDIR="@LIBDIR@"
-+LIBDIR=`pkg-config --variable libdir ptlib`
- PTINSTDIR="@prefix@/share/ptlib"
+-PTINSTDIR="@prefix@/share/ptlib"
 -MACHTYPE="@MACHTYPE@"
+-OSTYPE="@OSTYPE@"
+-OSRELEASE="@OSRELEASE@"
++VERSION=`pkg-config --modversion ptlib`
++CCFLAGS=`pkg-config --cflags ptlib`
++LDFLAGS=`pkg-config --libs-only-other ptlib`
++LIBS=`pkg-config --static --libs-only-l ptlib`
++LIBDIR=`pkg-config --variable libdir ptlib`
++PTINSTDIR="$prefix/share/ptlib"
 +MACHTYPE=`pkg-config --variable machtype ptlib`
- OSTYPE="@OSTYPE@"
- OSRELEASE="@OSRELEASE@"
++OSTYPE=`pkg-config --variable ostype ptlib`
++OSRELEASE=`pkg-config --variable osrelease ptlib`
  SHAREDLIBEXT="@SHAREDLIBEXT@"
+ 
+ # usage="Usage: ptlib-config [--prefix[=DIR]] [--exec-prefix[=DIR]] [--version] [--libs] [--cflags]"

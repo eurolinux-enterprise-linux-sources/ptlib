@@ -1,7 +1,7 @@
 Name:		ptlib
 Summary:	Portable Tools Library
 Version:	2.10.10
-Release:	3%{?dist}
+Release:	6%{?dist}
 URL:		http://www.opalvoip.org/
 License:	MPLv1.0
 Group:		System Environment/Libraries
@@ -104,6 +104,15 @@ EOF
 %attr(755,root,root) %{_bindir}/*
 
 %changelog
+* Tue Mar 18 2014 Benjamin Otte <otte@redhat.com> - 2.10.2-6
+- Fix multilib issues
+
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 2.10.10-5
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 2.10.10-4
+- Mass rebuild 2013-12-27
+
 * Wed Oct  9 2013 Matthias Clasen <mclasen@redhat.com> - 2.10.10-3
 - Avoid multilib conflict (#884145)
 
